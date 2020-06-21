@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="Post">
+        <div class='form-group'>
+            <select class='form-control' name="symbol">
+                    <option selected>Ticker</option>
+                {% for ticker_n_shares in ticker_input %}
+                    {% for ticker, share in ticker_n_shares.items() %}
+                        <option>{{ ticker }}</option>
+                    {% endfor %}
+                {% endfor %}
+            </select>
+        </div>
+         <div class='form-group'>
+            <input text="shares" name="shares" type="number" class='form-control' placeholder="Shares">
+        </div>
+        <button class='btn btn-primary' type='submit'>Sell</button>
+    </form>
+
+{% endblock %}

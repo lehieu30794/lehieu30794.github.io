@@ -1,0 +1,10 @@
+pk_810f4b4d0f3143259467ca93e64d0019
+
+
+
+CREATE TABLE directors (
+                movie_id INTEGER NOT NULL,
+                person_id INTEGER NOT NULL,
+                FOREIGN KEY(movie_id) REFERENCES movies(id),
+                FOREIGN KEY(person_id) REFERENCES people(id)
+            );

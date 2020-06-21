@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Portfolio
+
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col" style="text-align:left;">Symbol</th>
+                <th scope="col" style="text-align:left;">Name</th>
+                <th scope="col" style="text-align:left;">Shares</th>
+                <th scope="col" style="text-align:left;">Price</th>
+                <th scope="col" style="text-align:left;">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stock in portfolio %}
+                {% if stock['shares'] > 0 %}
+                    <tr>
+                            <td style="text-align:left;">{{ stock['ticker'] }}</td>
+                            <td style="text-align:left;">{{ stock['name'] }}</td>
+                            <td style="text-align:left;">{{ stock['shares'] }}</td>
+                            <td style="text-align:left;">${{ stock['price'] }}</td>
+                            <td style="text-align:left;">${{ stock['total'] }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+                <tr>
+                    <td style="text-align:left;">CASH</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="text-align:left;">${{ cash_left }}</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="text-align:left;"><b>${{ total_value_of_current_portfolio }}</b></td>
+                </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{#
+
+[{'ticker': 'AAPL', 'name': 'Apple, Inc.', 'shares': 11.0, 'price': 349.72}, {'ticker': 'TQQQ', 'name': 'ProShares UltraPro QQQ', 'shares': 2, 'price': 93.92}, {'ticker': 'BA', 'name': 'The Boeing Co.', 'shares': 14, 'price': 187.02}]
+
+#}
